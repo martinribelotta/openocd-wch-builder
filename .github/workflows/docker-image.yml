@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag oocd-builder:$(date +%s) && \
-           mkdir out && \
+      run: docker build . --file Dockerfile --tag oocd-builder:$(date +%s)
+           mkdir out
            docker run --volume=out/:/out oocd-builder:$(date +%s)
