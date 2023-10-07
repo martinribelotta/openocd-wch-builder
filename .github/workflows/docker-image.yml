@@ -17,4 +17,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag oocd-builder
     - run: mkdir out
-    - run: docker run --volume=out:/out oocd-builder
+    - run: docker run --volume=out:/out --entrypoint=/bin/build-oocd.sh oocd-builder
