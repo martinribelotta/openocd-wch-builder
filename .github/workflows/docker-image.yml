@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  IMAGE_TIMESTAMP: $(date +%s)
+
 jobs:
 
   build:
@@ -15,6 +18,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag oocd-builder:$(date +%s)
+      run: docker build . --file Dockerfile --tag oocd-builder:$IMAGE_TIMESTAMP
     - run: mkdir out
-    - run: docker run --volume=out/:/out oocd-builder:$(date +%s)
+    - run: docker run --volume=out/:/out oocd-builder:$IMAGE_TIMESTAMP
