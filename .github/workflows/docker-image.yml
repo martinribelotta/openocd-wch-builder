@@ -19,7 +19,7 @@ jobs:
         docker build . --file Dockerfile --tag oocd-builder
         mkdir out
         docker run --volume=out:/out --entrypoint=/bin/build-oocd.sh oocd-builder
-        ls out/*
+        pwd ; ls *
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
